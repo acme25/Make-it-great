@@ -209,7 +209,7 @@ async def debug_yolo(file: UploadFile = File(...)):
 
         first_image = image_paths[0]
 
-        detections = detect_objects(first_image)
+        detections = detect_objects(first_image, conf=0.1)
 
         return {
             "file": file.filename,

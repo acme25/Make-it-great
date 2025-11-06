@@ -14,8 +14,9 @@ else:
     _yolo_model = YOLO(config.YOLO_MODEL_NAME)
     
 
-def detect_objects(image_path: str):
-    results = _yolo_model(image_path)[0]
+def detect_objects(image_path: str, conf: float = 0.25):
+    results = _yolo_model(image_path, conf=conf)[0]
+
     detections = []
     for box in results.boxes:
         cls_id = int(box.cls[0])
@@ -30,3 +31,4 @@ def detect_objects(image_path: str):
         })
 
     return detections
+
